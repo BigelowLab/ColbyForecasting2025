@@ -127,7 +127,8 @@ ____________________________________________________________________________
 
 **Thursday Jan 30**
  - Final project due
-   - A ~2,000 word write-up of your Gulf of Maine projection. Details of the project to follow.
+   - A ~2,000 word write-up of your Gulf of Maine projection. Details at this link:
+     - https://github.com/BigelowLab/ColbyForecasting2025/blob/main/assignments/writeup.md
 ____________________________________________________________________________
 ____________________________________________________________________________
 
