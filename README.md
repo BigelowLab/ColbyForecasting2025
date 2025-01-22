@@ -93,8 +93,7 @@ ____________________________________________________________________________
 ____________________________________________________________________________
 
 **Wednesday Jan 22**
- - Lecture: Reproducible Research
- - Discussion: Project abstracts
+ - Lecture: Algorithm Accountability
  - **R Tutorial: Predicting**
  - Reading assignment for Friday:
    - TBD
