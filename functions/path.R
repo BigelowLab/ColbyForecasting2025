@@ -11,13 +11,18 @@ get_year = function(date = Sys.Date()){
 
 
 
-get_user = function(){
+get_user = function(strip_basename = TRUE){
   
   #' A function to retrieve the username
   #' 
+  #' @param strip_basename logical, if TRUE return just the basename. 
+  #'   This only has meaning if the platform is Windows, harmless
+  #'   otherwise
   #' @return username
   
-  system("whoami", intern = TRUE)
+  u = system("whoami", intern = TRUE)
+  if (strip_basename) u = basename(u)
+  u
 }
 
 
@@ -27,7 +32,6 @@ make_path = function(path){
   #' 
   #' @param path chr the path to create
   #' @return the path
-  
   if (!dir.exists(path)) ok = dir.create(path, recursive = TRUE)
   return(path)
 }

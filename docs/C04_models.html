@@ -207,6 +207,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./S01_Observations.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">My_observations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
@@ -439,18 +445,18 @@ Note
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>tr_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,453 × 8
-   class        MLD  Sbtm   SSS   SST  Tbtm         U           V
-   &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
- 1 background  3.53  29.5  29.0  17.7 15.6  -0.00355   0.000511  
- 2 background  4.51  28.6  28.6  19.8 19.9   0.00193   0.00234   
- 3 background  4.56  28.4  28.3  20.2 20.3   0.00202  -0.00158   
- 4 background  4.95  28.0  28.0  20.8 20.8  -0.000153 -0.00000933
- 5 background  3.60  29.9  29.4  17.4 15.0  -0.00332   0.00153   
- 6 background  3.63  30.1  29.3  17.6 13.6  -0.000100  0.00167   
- 7 background  4.02  31.9  29.3  17.8  5.38 -0.000583  0.00207   
- 8 background  4.46  32.1  29.3  18.0  5.33 -0.000284  0.00229   
- 9 background  4.48  32.4  28.8  18.4  5.64  0.00486   0.00551   
-10 background  4.68  32.3  28.6  18.6  5.71  0.00707   0.00473   
+   class        MLD  Sbtm   SSS   SST  Tbtm          U         V
+   &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;
+ 1 background  3.53  29.5  29.0  17.7 15.6  -0.00355    0.000511
+ 2 background  3.92  31.1  28.9  17.9  7.64 -0.0000966  0.00158 
+ 3 background  4.51  28.6  28.6  19.8 19.9   0.00193    0.00234 
+ 4 background  4.56  28.4  28.3  20.2 20.3   0.00202   -0.00158 
+ 5 background  3.63  30.1  29.3  17.6 13.6  -0.000100   0.00167 
+ 6 background  2.84  31.6  29.3  17.6  5.80 -0.00135    0.00327 
+ 7 background  4.02  31.9  29.3  17.8  5.38 -0.000583   0.00207 
+ 8 background  4.46  32.1  29.3  18.0  5.33 -0.000284   0.00229 
+ 9 background  4.34  32.4  29.2  18.1  5.50 -0.000321   0.00283 
+10 background  4.01  32.4  29.1  18.1  5.53  0.000172   0.00369 
 # ℹ 5,443 more rows</code></pre>
 </div>
 </div>
@@ -709,7 +715,7 @@ Mtry:                             2
 Target node size:                 10 
 Variable importance mode:         permutation 
 Splitrule:                        gini 
-OOB prediction error (Brier s.):  0.2117768 </code></pre>
+OOB prediction error (Brier s.):  0.2109653 </code></pre>
 </div>
 </div>
 </section>
@@ -726,16 +732,16 @@ OOB prediction error (Brier s.):  0.2117768 </code></pre>
 <pre><code># A tibble: 5,453 × 4
    .pred_presence .pred_background .pred      class     
             &lt;dbl&gt;            &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt;     
- 1        0.00817            0.992 background background
- 2        0.331              0.669 background background
- 3        0.176              0.824 background background
- 4        0.148              0.852 background background
- 5        0.00682            0.993 background background
- 6        0.0105             0.990 background background
- 7        0.0316             0.968 background background
- 8        0.0425             0.958 background background
- 9        0.0984             0.902 background background
-10        0.0897             0.910 background background
+ 1        0.0126             0.987 background background
+ 2        0.0821             0.918 background background
+ 3        0.336              0.664 background background
+ 4        0.223              0.777 background background
+ 5        0.00834            0.992 background background
+ 6        0.0647             0.935 background background
+ 7        0.0380             0.962 background background
+ 8        0.0311             0.969 background background
+ 9        0.0466             0.953 background background
+10        0.0853             0.915 background background
 # ℹ 5,443 more rows</code></pre>
 </div>
 </div>
@@ -746,10 +752,10 @@ OOB prediction error (Brier s.):  0.2117768 </code></pre>
 <pre><code># A tibble: 4 × 3
   .pred      class          n
   &lt;fct&gt;      &lt;fct&gt;      &lt;int&gt;
-1 presence   presence    1385
-2 presence   background   352
-3 background presence     455
-4 background background  3261</code></pre>
+1 presence   presence    1389
+2 presence   background   351
+3 background presence     451
+4 background background  3262</code></pre>
 </div>
 </div>
 <p>There false positives and false negatives, but many are correct. Of course, this is predicting with the very data we used to train the model; knowing that this is predicicting on training data with some many misses might not inspire confidence. But let’s explore more.</p>
@@ -766,8 +772,8 @@ OOB prediction error (Brier s.):  0.2117768 </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Truth
 Prediction   presence background
-  presence       1385        352
-  background      455       3261</code></pre>
+  presence       1389        351
+  background      451       3262</code></pre>
 </div>
 </div>
 <p>You’ll see this is the same as the simple tally we made, but it comes with handy plotting functionality (shown below). Note that a perfect model would have the upper left and lower right quadrants fully accounting for all points. The lower left quadrant shows us the number of false-negatives while the upper right quadrant shows the number of false-positives.</p>
@@ -816,7 +822,7 @@ Prediction   presence background
 <pre><code># A tibble: 1 × 3
   .metric  .estimator .estimate
   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
-1 accuracy binary         0.852</code></pre>
+1 accuracy binary         0.853</code></pre>
 </div>
 </div>
 </section>
@@ -848,16 +854,16 @@ Prediction   presence background
 <pre><code># A tibble: 1,819 × 4
    .pred_presence .pred_background .pred      class   
             &lt;dbl&gt;            &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt;   
- 1         0.423             0.577 background presence
- 2         0.179             0.821 background presence
- 3         0.747             0.253 presence   presence
- 4         0.580             0.420 presence   presence
- 5         0.727             0.273 presence   presence
- 6         0.437             0.563 background presence
- 7         0.840             0.160 presence   presence
- 8         0.724             0.276 presence   presence
- 9         0.0526            0.947 background presence
-10         0.407             0.593 background presence
+ 1        0.210              0.790 background presence
+ 2        0.472              0.528 background presence
+ 3        0.847              0.153 presence   presence
+ 4        0.269              0.731 background presence
+ 5        0.729              0.271 presence   presence
+ 6        0.0251             0.975 background presence
+ 7        0.690              0.310 presence   presence
+ 8        0.00902            0.991 background presence
+ 9        0.151              0.849 background presence
+10        0.399              0.601 background presence
 # ℹ 1,809 more rows</code></pre>
 </div>
 </div>
@@ -898,7 +904,7 @@ Prediction   presence background
 <pre><code># A tibble: 1 × 3
   .metric  .estimator .estimate
   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
-1 accuracy binary         0.694</code></pre>
+1 accuracy binary         0.695</code></pre>
 </div>
 </div>
 </section>
