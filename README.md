@@ -107,7 +107,8 @@ ____________________________________________________________________________
  - **R Tutorial: Spillover**
  - Reading assignment for Monday:
    - Pershing 2020 - https://github.com/BigelowLab/ColbyForecasting2025/blob/main/reading/Pershing.elementa.2020.00076.pdf
-
+   - Hobday 2020 - https://github.com/BigelowLab/ColbyForecasting2025/blob/main/reading/Hobday2020.pdf
+     
 ____________________________________________________________________________
 ____________________________________________________________________________
 **Monday Jan 27**
