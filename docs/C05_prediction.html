@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./S01_Observations.qmd" rel="next">
+<link href="./about.html" rel="next">
 <link href="./C04_models.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -207,12 +207,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./S01_Observations.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">My_observations</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
@@ -276,7 +270,7 @@ Yogi Berra
 </dd>
 </dl>
 </blockquote>
-<p>Finally we come to the end product of forecasting: the prediction. This last step is actually fairly simple, given a recipe and model (now bundled in a <code>workflow</code> container), run the same data-prep and predicting steps as we did earlier. One modification is that we now want to predict across the entire domain of our Brickman data set. You may recall that we are able to read these arrays, display them and extract point data from them. But we haven’t used them <em>en mass</em> as a variable yet.</p>
+<p>Finally we come to the end product of forecasting: the prediction. This last step is actually fairly simple, given a recipe and model (now bundled in a <code>workflow</code> container). We have already made predictions using tables of input covariates, but we now want to predict across the entire domain of our Brickman data set. This requires predicting with <code>stars</code> objects not tables. You may recall that we are able to read these arrays, display them and extract point data from them. But we haven’t used them <em>en mass</em> as a variable yet.</p>
 <section id="setup" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Setup</h1>
 <p>As always, we start by running our setup function. Start RStudio/R, and reload your project with the menu <code>File &gt; Recent Projects</code>.</p>
@@ -301,14 +295,14 @@ Yogi Berra
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>wflow <span class="ot">=</span> <span class="fu">read_workflow</span>(<span class="at">version =</span> cfg<span class="sc">$</span>version)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Recall that the workflow has two elements: pre-processing recipe and model. When we make a prediction with the workflow it will accept new data that then gets filtered and/or transformed as specified by the recipe steps. The data that survives the preprocessing will then be used to feed into the model that was trained on a specific domain (time and space).</p>
+<p>Recall that the workflow is a container that has has two elements: pre-processing recipe and model. When we make a prediction with the workflow it will accept new data that then gets filtered and/or transformed as specified by the recipe steps. The data that survives the preprocessing will then be used to feed into the model that was trained on a specific domain (time and space).</p>
 </section>
 <section id="make-a-prediction" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Make a prediction</h1>
 <p>First we shall make a “nowcast” which is just a prediction of the current environmental conditions.</p>
 <section id="nowcast" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="nowcast"><span class="header-section-number">4.1</span> Nowcast</h2>
-<p>First make the prediction. The function yields a <code>stars</code> array object that has three attributes: <code>.pred_presence</code>, <code>.pred_background</code> and <code>.pred</code>. The leading dot simply gives us the heads up that these three values are all computed. The first two range from 0-1 which implies a probability. The last, <code>.pred</code>, is the class label we would assign if we accept that any <code>.pred_presence &gt;= 0.5</code> should be considered suitable habitat where a <strong>reported observation</strong> might occur.</p>
+<p>First make the prediction using <code>predict_stars()</code>. The function yields a <code>stars</code> array object that has three attributes: <code>.pred_presence</code>, <code>.pred_background</code> and <code>.pred</code>. The leading dot simply gives us the heads up that these three values are all computed. The first two range from 0-1 which implies a probability. The last, <code>.pred</code>, is the class label we would assign if we accept that any <code>.pred_presence &gt;= 0.5</code> should be considered suitable habitat where a <strong>reported observation</strong> might occur.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nowcast <span class="ot">=</span> <span class="fu">predict_stars</span>(wflow, covars)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>nowcast</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -446,7 +440,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Curious about we provide year as a vector of characters instead of a vector of integers? Try running the command above again and check out the 3rd dimension.</p>
+<p>Curious about why we provide year as a vector of characters instead of a vector of integers? Try running the command above again but this time using <code>along = list(year = c(2020, 2055, 2075))</code> (as numbers not strings). Then check out the 3rd dimension.</p>
 </div>
 </div>
 <p>Since we are plotting multiple arrays, we need to plot the coastline using a “hook” function.</p>
@@ -936,8 +930,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./S01_Observations.qmd" class="pagination-link" aria-label="My_observations">
-        <span class="nav-page-text">My_observations</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./about.html" class="pagination-link" aria-label="About">
+        <span class="nav-page-text">About</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

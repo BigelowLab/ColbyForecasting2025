@@ -5,7 +5,7 @@ title: "Prediction"
 > It's tough to make predictions, especially about the future.
 > ~ Yogi Berra
 
-Finally we come to the end product of forecasting: the prediction. This last step is actually fairly simple, given a recipe and model (now bundled in a `workflow` container), run the same data-prep and predicting steps as we did earlier. One modification is that we now want to predict across the entire domain of our Brickman data set. You may recall that we are able to read these arrays, display them and extract point data from them. But we haven't used them *en mass* as a variable yet.
+Finally we come to the end product of forecasting: the prediction. This last step is actually fairly simple, given a recipe and model (now bundled in a `workflow` container).  We have already made predictions using tables of input covariates, but we now want to predict across the entire domain of our Brickman data set.  This requires predicting with `stars` objects not tables. You may recall that we are able to read these arrays, display them and extract point data from them. But we haven't used them *en mass* as a variable yet.
 
 # Setup
 
@@ -35,7 +35,7 @@ We read the recipe and model workflow bundle.
 wflow = read_workflow(version = cfg$version)
 ```
 
-Recall that the workflow has two elements: pre-processing recipe and model.  When we make a prediction with the workflow it will accept new data that then gets filtered and/or transformed as specified by the recipe steps. The data that survives the preprocessing will then be used to feed into the model that was trained on a specific domain (time and space).
+Recall that the workflow is a container that has has two elements: pre-processing recipe and model.  When we make a prediction with the workflow it will accept new data that then gets filtered and/or transformed as specified by the recipe steps. The data that survives the preprocessing will then be used to feed into the model that was trained on a specific domain (time and space).
 
 # Make a prediction
 
@@ -43,7 +43,7 @@ First we shall make a "nowcast" which is just a prediction of the current enviro
 
 ## Nowcast
 
-First make the prediction.  The function yields a `stars` array object that has three attributes: `.pred_presence`, `.pred_background` and `.pred`.  The leading dot simply gives us the heads up that these three values are all computed. The first two range from 0-1 which implies a probability.  The last, `.pred`, is the class label we would assign if we accept that any `.pred_presence >= 0.5` should be considered suitable habitat where a **reported observation** might occur.
+First make the prediction using `predict_stars()`.  The function yields a `stars` array object that has three attributes: `.pred_presence`, `.pred_background` and `.pred`.  The leading dot simply gives us the heads up that these three values are all computed. The first two range from 0-1 which implies a probability.  The last, `.pred`, is the class label we would assign if we accept that any `.pred_presence >= 0.5` should be considered suitable habitat where a **reported observation** might occur.
 
 
 ```{r nowcast}
@@ -111,7 +111,7 @@ We want to bind the `.pred_presence` attribute for each of the predictions (nowc
 rcp85 = c(nowcast, forecast_2055, forecast_2075, along = list(year = c("2020", "2055", "2075")))
 ```
 :::{.callout-note}
-Curious about we provide year as a vector of characters instead of a vector of integers?  Try running the command above again and check out the 3rd dimension.
+Curious about why we provide year as a vector of characters instead of a vector of integers?  Try running the command above again but this time using `along = list(year = c(2020, 2055, 2075))` (as numbers not strings). Then check out the 3rd dimension.
 :::
 
 
